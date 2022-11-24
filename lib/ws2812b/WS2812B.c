@@ -6,6 +6,7 @@
  */
 #include "WS2812B.h"
 #include <string.h>
+#include <stm32wbxx.h>
 uint8_t WS2812B_ledbuffer[WS2812B_LEDS][3];
 
 static void _port_init(void) {
@@ -34,141 +35,22 @@ void WS2812B_send() {
             for(uint8_t i = 7; i != 255; i--) {
                 if(WS2812B_ledbuffer[lednumber][color] & (1 << i)) {
                     furi_hal_gpio_write(LED_PIN, true);
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
+                    uint32_t start = DWT->CYCCNT;
+                    while((DWT->CYCCNT - start) < 15) {
+                    };
                     furi_hal_gpio_write(LED_PIN, false);
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
+                    start = DWT->CYCCNT;
+                    while((DWT->CYCCNT - start) < 31) {
+                    };
                 } else {
                     furi_hal_gpio_write(LED_PIN, true);
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
+                    uint32_t start = DWT->CYCCNT;
+                    while((DWT->CYCCNT - start) < 31) {
+                    };
                     furi_hal_gpio_write(LED_PIN, false);
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
-                    asm("nop");
+                    start = DWT->CYCCNT;
+                    while((DWT->CYCCNT - start) < 15) {
+                    };
                 }
             }
         }

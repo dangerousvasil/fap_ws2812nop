@@ -9,7 +9,7 @@
 #define WS2812B_H_
 
 #include "furi.h"
-#include "input/input.h"
+#include <input/input.h>
 
 #define LED_PIN &gpio_ext_pa7
 
